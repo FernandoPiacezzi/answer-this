@@ -1,25 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import { QuestionForm } from './Components/QuestionForm';
+import { ToggleTheme } from './Components/ToggleTheme';
+
+
+
+import { GlobalStyle } from './styles/globalstyle';
 
 function App() {
+  const [theme, setTheme] = useState('dark')
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        <ToggleTheme setTheme={setTheme} theme={theme}/>
+        <QuestionForm />
+        <GlobalStyle theme={theme} />
+      </div>
   );
 }
 
